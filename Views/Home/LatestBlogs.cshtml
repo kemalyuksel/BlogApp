@@ -1,0 +1,47 @@
+﻿@using BlogApp.Entities
+@model List<BlogModel>
+
+
+
+
+<div class="sidebar-box ftco-animate">
+    <h3 class="sidebar-heading">Son Konular</h3>
+
+    @foreach (var item in Model)
+    {
+        <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image:  url(/Upload/Blogs/@item.Url);"></a>
+            <div class="text">
+                <h3 class="heading">
+                    <a href="/Home/Single/@item.Id">
+                        @if (item.Title.Length > 40)
+                        {
+                            @(item.Title.Substring(0, 40) + "...")
+                        }
+                        else
+                        {
+                            @item.Title
+                        }
+                    </a>
+                </h3>
+                <div class="meta">
+                    <div><a><span class="icon-calendar"></span> @item.When</a></div>
+
+
+                    <div><a><span class="icon-chat"></span> @item.Comments.Count()</a></div>
+                    <br />
+                    <div>
+                        <a>
+                            <span class="icon-person">@item.Author</span>
+
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+

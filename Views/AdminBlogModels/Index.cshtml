@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BlogApp.Entities.BlogModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Yeni Blog Oluştur", "Create",null,new {@class="btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th> 
+            Foto
+        </th>
+        <th >
+            Başlık
+        </th>
+        <th>
+            Kategori
+        </th>
+        <th>
+            Yazar
+        </th>
+        <th>
+            Tarih
+        </th>
+
+        <th>
+            Onay
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img  src="/Upload/Blogs/@item.Url" class="rounded-circle" style="width:150px;height:150px"/>
+            </td>
+            <td>
+                @if (item.Title.Length > 50)
+                {
+                    @item.Title.Substring(0, 50)
+                }
+                else
+                {
+                    @item.Title
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.When)
+            </td>
+            <td>
+                @if (item.isApproved == true)
+                {
+                <button class="btn btn-success  btn-xs">✓</button>
+                }
+                else
+                {
+                    <button class="btn btn-danger  btn-xs">X</button>
+                }
+            </td>
+
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-primary mb-2 " })
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger ml-4" })
+
+            </td>
+        </tr>
+    }
+
+</table>

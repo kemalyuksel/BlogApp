@@ -1,0 +1,40 @@
+﻿@using BlogApp.Entities
+@model Comments
+
+@{
+    Layout = null;
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("AddComments", "Home"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="p-3 p-md-5 bg-light">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label for="message">Yorumunuz</label>
+                <textarea name="Article" id="Article" cols="70" rows="4" class="form-control"></textarea>
+            </div>
+
+            
+
+
+            <div class="form-group">
+                <input type="submit" value="Yorumu Gönder" class="btn py-3 px-4 btn-primary">
+            </div>
+        </div>
+    }
+
+
+}
+else
+{
+    <a href="/Account/Login">Yorum Yapmak İçin Giriş Yapmalısın.</a>
+}
+
+

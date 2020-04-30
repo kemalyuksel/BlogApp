@@ -1,0 +1,64 @@
+﻿﻿@using BlogApp.Entities
+@model BlogModel
+@{
+    ViewBag.Title = "Single";
+}
+
+ 
+
+    <div class="tag-widget post-tag-container mt-1">
+        <div class="tagcloud ">
+            <a href="/Home/List/@Model.CategoryModelId" class="tag-cloud-link">@Model.Category.Name</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="/Home/Likes/@Model.Id" style="color:red;background-color:floralwhite" class="icon-heart pt-2 pb-2"> @Model.Likes</a>
+            }
+            else
+            {
+                <a href="@Request.CurrentExecutionFilePath" style="color:red;background-color:floralwhite" class="icon-heart pt-2 pb-2"> @Model.Likes</a>
+            }
+        </div>
+    </div>
+<h1 class="mb-3">@Model.Title</h1>
+
+
+<p>@Html.Raw(Model.Description)</p>
+<p>
+    <img src="~/upload/Blogs/@Model.Url" alt="" class="img-fluid">
+</p>
+
+<p>@Html.Raw(Model.Article)</p>
+
+
+
+
+
+<div class="about-author d-flex p-4 bg-light mt-5" style="width:700px;height:150px">
+    <div class="bio mr-5">
+        <img src="~/Upload/Users/@(Model.Author+".jpg")" style="width:100px" alt="Image placeholder" class="img-fluid mb-4">
+        <br />
+        <br />
+    </div>
+    <div class="desc ">
+        <h4>Yazar</h4>
+        <h3>@Model.Author</h3>
+        <p></p>
+    </div>
+</div>
+<div class="tag-widget post-tag-container mt-1">
+    <div class="tagcloud ">
+        <a href="/Home/List/@Model.CategoryModelId" class="tag-cloud-link">@Model.Category.Name</a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="/Home/Likes/@Model.Id" style="color:red;background-color:floralwhite" class="icon-heart pt-2 pb-2"> @Model.Likes</a>
+        }
+        else
+        {
+            <a href="@Request.CurrentExecutionFilePath" style="color:red;background-color:floralwhite" class="icon-heart pt-2 pb-2"> @Model.Likes</a>
+        }
+    </div>
+</div>
+
+
+@Html.Action("GetComments")
+

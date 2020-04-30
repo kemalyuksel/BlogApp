@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BlogApp.Entities.Comments>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+           Blog
+        </th>
+        <th>
+           Yorum
+        </th>
+        <th>
+           Kullanıcı
+        </th>
+        <th>
+            Zaman
+        </th>
+        <th>
+            Onay
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Blog.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Article)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.When)
+    </td>
+
+    <td>
+        @if (item.isApproved == true)
+        {
+            <button class="btn btn-success  btn-xs">✓</button>
+        }
+        else
+        {
+            <button class="btn btn-danger  btn-xs">X</button>
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-primary mb-2 " })
+        @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger ml-4" })
+
+    </td>
+</tr>
+    }
+
+</table>

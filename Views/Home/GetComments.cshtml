@@ -1,0 +1,27 @@
+﻿@using BlogApp.Entities
+@model List<Comments>
+
+    <div class="pt-5 mt-5">
+        <h3 class="mb-5 font-weight-bold">@ViewBag.yorum Yorum</h3>
+        <ul class="comment-list">
+            @foreach (var item in Model)
+            {
+                <li class="comment">
+                    <div class="vcard bio">
+                        <img src="~/Upload/Users/@(item.UserName+".jpg")" alt="Image placeholder">
+                    </div>
+                    <div class="comment-body">
+                        <h3>@item.UserName</h3>
+                        <div class="meta " style="color:gray">@item.When</div>
+                        <p>@item.Article</p>
+                        <hr />
+                    </div>
+                </li>
+            }
+
+        </ul>
+
+        @Html.Action("AddComments", "Home")
+
+
+    </div>

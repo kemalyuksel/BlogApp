@@ -1,0 +1,57 @@
+﻿@using BlogApp.Entities
+@model List<BlogModel>
+@{
+    ViewBag.Title = "List";
+}
+
+<style>
+    #acik{
+        color: rgba(0, 0, 0, 0.84);
+    font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 21px;
+    letter-spacing: -0.084px;
+        line-height: 1.8;
+    font-weight: 400;
+    }
+</style>
+
+@if (Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="col-md-12">
+            <div class="blog-entry-2 ftco-animate">
+                <a href="/Home/Single/@item.Id" class="img" style="background-image:  url(/Upload/Blogs/@item.Url);"></a>
+                <div class="text pt-4">
+                    <h3 class="mb-4"><a href="/Home/Single/@item.Id">@item.Title</a></h3>
+                    <p class="mb-4" id="acik" style="left:0px">
+                       @Html.Raw(item.Description)
+                    </p>
+                    <div class="author mb-4 d-flex align-items-center">
+                        <a href="#" class="img" style="background-image: url(../Upload/Users/@(item.Author+".jpg"));"></a>
+                        <div class="ml-3 info">
+                            <span>Yazar</span>
+                            <h3><a href="#">@item.Author</a>, <span>@item.When</span></h3>
+                        </div>
+                    </div>
+                    <div class="meta-wrap d-md-flex align-items-center">
+                        <div class="half order-md-last text-md-right">
+                            <p class="meta">
+                                <span><i class="icon-heart"></i>@item.Likes</span>
+                                <span><i class="icon-eye"></i>@item.Looks</span>
+                                <span><i class="icon-comment"></i>@item.Comments.Count()</span>
+                            </p>
+                        </div>
+                        <div class="half">
+                            <p><a href="/Home/Single/@item.Id"class="btn btn-primary p-3 px-xl-4 py-xl-3">Devamını Oku</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h3>Blog bulunamadı...</h3>
+}

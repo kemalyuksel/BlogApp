@@ -1,0 +1,22 @@
+﻿@using BlogApp.Identity
+@model ApplicationUser
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="blog-entry ftco-animate d-md-flex">
+        <div class="row">
+            <img src="~/Upload/Users/@(User.Identity.Name+".jpg")" class="rounded-circle mb-2 ml-5" alt="Cinque Terre" width="150" height="150">
+            <div class="container mb-4 mt-2 ml-5">
+                <strong> @Model.Name.ToUpper()&nbsp;@Model.Surname.ToUpper()</strong>
+                <a href="/AdminBlogModels/Create" class="btn btn-success" style="float:right;margin-left:235px">Blog Oluştur</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@Html.Action("ProfileTable")

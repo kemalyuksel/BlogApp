@@ -1,0 +1,44 @@
+﻿@using BlogApp.Entities
+@model IEnumerable<BlogModel>
+
+@{
+    ViewBag.Title = "About";
+
+}
+
+    <style>
+        #acik {
+            color: rgba(0, 0, 0, 0.84);
+            font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+            font-size: 21px;
+            letter-spacing: -0.084px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+    </style>
+
+
+
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12">
+        <div class="blog-entry ftco-animate d-md-flex">
+            <a href="/Home/Single/@item.Id" class="img img-2" style="background-image: url(/upload/blogs/@item.Url);"></a>
+            <div class="text text-2 pl-md-4">
+                <h3 class="mb-2"><a href="/Home/Single/@item.Id">@item.Title</a></h3>
+                <div class="meta-wrap">
+                    <p class="meta">
+                        <span><i class="icon-calendar mr-1"></i>@item.When</span>
+                        <span><a href="/Home/List/@item.Category.Name/@item.Id"><i class="icon-folder-o mr-1"></i>@item.Category.Name</a></span>
+                        <span><i class="icon-comment2 mr-1"></i>@item.Comments.Count() Yorum</span>
+                    </p>
+                </div>
+                <p class="mb-4" id="acik" style="left:0px" >
+                    @Html.Raw(item.Description)
+                </p>
+            <p><a href="/Home/Single/@item.Id" class="btn-custom">Devamını Oku <span class="ion-ios-arrow-forward"></span></a></p>
+        </div>
+    </div>
+</div>
+}

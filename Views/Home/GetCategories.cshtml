@@ -1,0 +1,17 @@
+﻿@using BlogApp.Entities
+@model List<CategoryModel>
+
+
+<div class="sidebar-box ftco-animate">
+    <h3 class="sidebar-heading">Kategoriler</h3>
+    <ul class="categories">
+        @foreach (var item in Model)
+        {
+            <li><a href="/Home/List/@item.Id">@item.Name ( @item.Bloglar.Count() )<span></span></a></li>
+        }
+
+
+    </ul>
+</div>
+
+
