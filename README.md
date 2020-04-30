@@ -1,3 +1,3 @@
 # BlogApp
 
-Asp.net Mvc Basic Blog App
+Asp.net Mvc Simple Blog App
