@@ -1,6 +1,6 @@
  # BlogApp
 
- <h4>Asp.net Mvc Simple Blog App</h4>
+ <h3>Asp.net Mvc Simple Blog App</h2>
  
 <hr>
 <b>Home</b>
