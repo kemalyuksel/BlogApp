@@ -11,4 +11,4 @@
 <p> <img src="https://raw.githubusercontent.com/kemalyuksel/BlogApp/master/SAMPLE%20PICS/single.png"> </p>
 <hr>
 <b>Admin</b>
-<p> <img src="https://raw.githubusercontent.com/kemalyuksel/BlogApp/master/SAMPLE%20PICS/adminpanel.png"> </p>
+<p> <img src="https://raw.githubusercontent.com/kemalyuksel/BlogApp/master/SAMPLE%20PICS/adminpanel.png"></p>
